@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            text-indent: 20px;
+        }
+
+
+        form {
+            /* Just to center the form on the page */
+            margin: 0 auto;
+            width: 600px;
+
+        }
+
+        form div+div {
+            margin-top: 5px;
+        }
+
+        .rect1 {
+            float: left;
+        }
+
+        label {
+            /* To make sure that all label have the same size and are properly align */
+            display: inline-block;
+            width: 90px;
+            text-align: left;
+
+        }
+
+        textarea {
+            /* To properly align multiline text fields with their labels */
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>상품 주문서</h1>
+        <fieldset>
+            <legend>
+                <p style="font-weight: bold; font-size: large; color: indigo;">개인 정보</p>
+            </legend>
+
+            <div>
+                <p class="a">
+                    <label for="name">이름</label>
+                    <input id="name" placeholder="여백없이 입력" type="text" required>
+                </p>
+            </div>
+
+            <div>
+                <p class="a">
+                    <label for="phone">연락처</label>
+                    <input id="phone" placeholder="연락가능한 번호" type="tel" required>
+                </p>
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <legend>
+                <p style="font-weight: bold; font-size: large; color: indigo;">배송지 정보</p>
+            </legend>
+            <div>
+                <p class="a">
+                    <label for="address">주소</label>
+                    <input id="address" dir="ltr" type="text" size="50">
+                </p>
+            </div>
+            <div>
+                <p class="a">
+                    <label for="phone1">전화번호</label>
+                    <input id="phone1" dir="ltr" type="tel">
+                </p>
+            </div>
+            <div>
+                <p class="a">
+                    <label for="memo">메모</label>
+                    <textarea name="memo" cols="50" rows="3"></textarea>
+                </p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <p style="font-weight: bold; font-size: large; color: indigo;">주문 정보</p>
+            </legend>
+
+            <div>
+                <p class="a">
+                    <input type="checkbox" value="grm">
+                    <label1 for="cofee1">과테말라 안티구아(10g)</label1>
+                    <input type="number" id="cofee1" value="0" min="0" max="10">개
+                </p>
+            </div>
+            <div>
+                <p class="a">
+                    <input type="checkbox" value="grm">
+                    <label1 for="cofee1">인도네시아 만델링(100g))</label1>
+                    <input type="number" id="cofee1" value="0" min="0" max="10">개
+                </p>
+            </div>
+            <div>
+                <p class="a">
+                    <input type="checkbox" value="grm">
+                    <label1 for="cofee1">탐라는도다(블렌딩)(100g)</label1>
+                    <input type="number" id="cofee1" value="0" min="0" max="10">개
+                </p>
+            </div>
+        </fieldset>
+    </form>
+    <center>
+        <br/>
+        <div1>
+            <button type="submit">주문하기</button>
+            <button type="reset">다시 작성</button>
+        </div1>
+    </center>
+</body>
+
+</html>
