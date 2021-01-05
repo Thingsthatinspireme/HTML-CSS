@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+
+    <style>
+        .info {
+            font-size: 14pt;
+        }
+
+        #start {
+            font-size: 14pt;
+        }
+
+        .panel {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            border: 2px solid #000;
+            margin-top: 10px;
+        }
+
+        .panel #fish {
+            position: absolute;
+            width: 150px;
+            left: 250px;
+            top: 150px;
+        }
+    </style>
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            // 점수 변수
+            var count = 0;
+
+            // 점수를 출력할 요소
+            var $score = $("#score");
+
+
+            var playing = true;
+            var $fish = $(".panel #fish");
+
+            $("#start").click(function () {
+                // 게임 진행 유무 판단 변수
+                function move() {
+
+
+                    if (playing) {
+                        var cnt = 0;
+                        cnt++;
+                        var step = parseInt(Math.random() * 300);
+
+                        var x = $fish.position().left + step;
+                        var y = $fish.position().top + step;
+
+                        if (x >= 430) {
+                            x = 50;
+
+                            $fish.attr("src", "../images/ddd1.jfif");
+                            step = -cnt * step;
+
+                        }
+                        else if (x < 50) {
+                            x = 50;
+                            $fish.attr("src", "../images/ddd1.jfif");
+
+                            step = cnt * step;
+                        }
+
+
+                        if (y >= 230) {
+
+                            y = 20;
+                            $fish.attr("src", "../images/ddd1.jfif");
+                            step = -cnt * step;
+
+                        }
+                        else if (y < 20) {
+
+                            y = 20;
+                            $fish.attr("src", "../images/ddd1.jfif");
+                            step = cnt * step;
+                        }
+                        $fish.css("left", x);
+                        $fish.css("top", y);
+
+                    }
+                }
+
+
+                $("#fish").click(function () {
+
+                    if (playing == true) {
+                        // 점수 증가
+                        count++;
+                        $fish.attr("src", "../images/ddd.jfif");
+                        $score.html(count);
+
+                    }
+                    setInterval(move, 500);
+
+
+                    setTimeout(function () {
+                        playing = false;
+                        alert("게임이 종료 되었습니다. 점수는" + count + "점 입니다")
+
+                    }, 10000)
+                });
+
+            });
+
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <h3>물고기 잡기 게임</h3>
+        <button id="start">게임 시작</button>
+        현재점수 <span id="score">0</span>
+    </div>
+
+    <div class="panel">
+        <img src="../images/ddd1.jfif" id="fish">
+    </div>
+</body>
+
+
+</html>
