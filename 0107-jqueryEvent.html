@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        //마우스 오버 이벤트는 마우스로 하는 이벤트라서 탭키를 이용했을때는 이벤트가 발생하지 않는다    
+        $(function () {
+            $(".btnEvent a").mouseover(function () {
+                alert("hello");
+            });
+
+            //focus를 이용해서 키보드로 이벤트를 발생시킬 수 있다 
+            $(".btnEvent a").focus(function () {
+                alert("hello");
+            });
+            //=> 마우스와 키보드 이벤트를 각각 등록하여 동시에 발생시킬 수 있게 했다
+
+            //위에서 한걸 한번에 그룹이벤트로 한번에 등록
+            $(".btnEvent a").on("mouseover focus", function () {
+                //사용자가 마우스를 올린곳이 디스가 된다. 이벤트대상을 this로 추적할 수 있다
+                var ts = $(this);
+                ts.css("background-color", "yellow");
+            });
+
+
+            //a요소를 클릭 했을 때 숨겨진 메뉴1, 2,3들이 보이게하고 다른 a를 누르면 펼쳐진 요소를 감추기
+            $(".btnEvent a").on("click", function () {
+                var ts = $(this);
+                $(".btnEvent").next("ul").filter(":visible").hide();
+                //btnEvent다음에 오는 ul요소중 보이는 요소만 감춰라
+                //filter 메소드를 통해서 visible한 요소를 걸러준것이다.
+                ts.parent().next().show();
+                //1) ts는 클릭한 a태그
+                //2) parent()는 a의 부모인 p
+                //3) next()는 p의 다음 형제요소인 ul
+                //4) show()메소드를 통해서 display: block으로 바뀌게 된다.
+                return false;
+                //이벤트 대상이 링크로 걸려있기 때문에 상단으로 이동이된다. 이 이동을 막기 위해서 false를 넘겨준다
+                //그러면 사용자가 들어왔을때 페이지가 이동되는 기본 이벤트를 차단할 수 있다.
+            });
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <p class="btnEvent"><a href="#">이벤트 대상1</a></p>
+    <ul style="display: none;">
+        <li>메뉴 1</li>
+        <li>메뉴 2</li>
+        <li>메뉴 3</li>
+    </ul>
+    <p class="btnEvent"><a href="#">이벤트 대상2</a></p>
+    <ul style="display: none;">
+        <li>메뉴 4</li>
+        <li>메뉴 5</li>
+        <li>메뉴 6</li>
+    </ul>
+</body>
+
+</html>
