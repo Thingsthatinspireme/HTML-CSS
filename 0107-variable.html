@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <script>
+        function hello(){
+            document.write("안녕하세요", "<br/>");
+            document.write("자바스크립트", "<br/>");
+        }
+
+        hello(); //메모리에 저장된 함수를 호출해줘야 실행이 된다.
+        hello(); //문장의 재활용성이 좋아진다 
+
+        //익명함수
+        var cry = function(){
+            document.write("자바스크립트 너무 어렵다", "<br/>");
+        }
+
+        cry();
+
+        //매개변수를 가지고 있는 함수
+        function fruite(num1, num2){
+            document.write("apple : "+ num1 + "<br/>");
+            document.write("banana : "+ num2 + "<br/>");
+
+        }
+
+        fruite(3, 10); //메모리에 저장된 함수를 호출해줘야 실행이 된다.
+        fruite(7, 1); //문장의 재활용성이 좋아진다 
+
+
+        //스코프
+
+        var a1 = 500;//전역변수
+        function outerFnc(){ //전역 함수 
+            var a2 = 200; //지역변수
+            document.write(a2, "<br/>");
+            
+            function innerFnc(){ //내부함수
+                document.write(a2 + 100, "<br/>");
+            }
+            innerFnc();//내부함수도 호출을 해줘야 한다 
+        }
+
+        document.write(a1, "<br/>");
+        //document.write(a2); 지역변수라서 밖에서 사용 불가  
+
+        outerFnc();
+       // innerFnc(); 이렇게 외부에서 내부함수를 호출하는 것은 불가능 하다 에러남
+
+
+       //retrun
+       function fnc(num1, num2){
+        document.write("num1 + num2 = ");
+        return num1 + num2; //3을 리턴해주고 함수를 종료해줌 
+        document.write("함수 종료 ----"); //함수가 종료해주기 때문에 실행되지 않음 
+
+       }
+
+       var result = fnc(1, 2);
+       document.write(result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
