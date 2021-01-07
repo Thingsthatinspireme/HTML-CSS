@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+    <script>
+
+        //생성자 함수를 이용하여 객체를 등록
+        var car = new Object();
+        car.color = "white";
+        car.price = "1000만원";
+        car.getInfo = function () {
+            document.write("색상 :", this.color, "<br/>")
+            document.write("가격 :", this.price, "<br/>")
+        }
+
+        car.getInfo();
+
+        //날짜
+        var today = new Date();
+        var y = today.getFullYear(); //년도
+        var m = today.getMonth(); //달은 -1한 숫자로 나오기 때문에 1을 더해줘야 현재의 달이 출력된다 
+        var d = today.getDate(); //일
+        var day = today.getDay(); //요일이 숫자로 표현된다 /일 : 0, 월 :1 ....
+        var selectDay = new Date("2020/12/25"); //지정한 달을 표시할 수 있다 
+        
+
+        document.write(today, "<br/>");
+        document.write(y, "<br/>");
+        document.write(m, "<br/>");
+        document.write(d, "<br/>");
+        document.write(day, "<br/>");
+
+        document.write(selectDay, "<br/>");
+
+        //수학
+        var num = 1.5;
+        Math.round(num); //2 반올림
+        Math.floor(num); // 소숫점자리 절삭
+        Math.ceil(num); //무조건 올림이되서 2가됨
+        Math.random(); //난수 생성
+
+        //문자
+        var str = "hello javascript";
+
+        str.charAt(6); //6번 인덱스의 문자 반환
+        str.indexOf("o"); //최초의 o가나온 인덱스값 반환
+        str.lastIndexOf("e"); // 마지막에 e가나온 인덱스의 값 반환
+        str.indexOf("p") //p는 없으니까 -1 반환 
+
+        //배열 
+        var arr1 = new Array(1, 2, 3);
+        document.write(arr1[0], "<br/>");
+        document.write(arr1[1], "<br/>");
+        document.write(arr1[2], "<br/>");
+
+        var arr2 = new Array();
+        arr2[0] = "가";
+        arr2[1] = "나";
+        arr2[2] = "다";
+        document.write(arr2[0], "<br/>");
+        document.write(arr2[1], "<br/>");
+        document.write(arr2[2], "<br/>");
+
+        var arr3 = ["a", "b", "c"];
+        document.write(arr3[0], "<br/>");
+        document.write(arr3[1], "<br/>");
+        document.write(arr3[2], "<br/>");
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
