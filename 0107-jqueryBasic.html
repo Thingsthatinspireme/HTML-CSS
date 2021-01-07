@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Basic</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            //직접 선택자
+            $(".content").css("border", "1px solid black");
+            $(".content p").css("background-color", "yellow");
+             
+            //근접 선택자 active다음인 네이버가 빨간색배경으로 지정됨
+            $(".active").next("p").css("background-color", "red");
+
+            //위치 선택자 eq()를 통해서 태그가 저장된 배열의 인덱스 번호를 받아서 위치를 지정
+            $(".content h1").eq(0).css("background-color", "skyblue");
+
+            //속성 선택자, 객체방식으로 css속성 이용, 객체방식이니까 구분할때 콜론을 이용한다 
+            $("input[type=text]").css({"background-color" : "pink"}); //input 요소중에서 type이 text인 속성만 핑크로 바뀜
+
+            //속성 삭제
+            $(".content p").eq(1).removeClass("active"); //.content p 인덱스 1번의 active라는 클래스 값을 삭제해라
+            //새요소 추가
+            $(".content").append("<p>새로 추가한 요소</p>"); //맨마지막에 새로 요소가 추가된다
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <p>안녕하세요</p>
+        <p class="active">내용2</p>
+        <p><a href="#">네이버</a></p>
+        <p>
+            <input type="text" value="Hello">    
+        </p>
+        <h1>반갑습니다</h1>
+        <h1>자바스크립트</h1>
+    </div>
+    <div class="content2">
+        <p>
+            <input type="text" value="Hi">
+            <br/>
+            <input type="number" value=7>
+        </p>
+    </div>
+</body>
+
+</html>
