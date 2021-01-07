@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .btn {
+            margin-bottom: 10px;
+        }
+
+        .content{
+            max-width: 600px;
+            border: 1px solid black;
+        }
+
+        .txt1{
+            width: 10%; /*600px의 10%라서 60px이며 10등분씩 이동을 하게된다*/
+            text-align: center;
+            background-color: pink;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var txt1 = $(".txt1");
+            var count = 1;
+
+            $(".btn button").on("click", function(){
+                var ts = $(this);
+                if(ts.hasClass("backBtn")){
+                    count--;
+                    if(count < 1){ //count값이 1보다 작으면 보더밖으로 튀어나간다 
+                        count = 1;
+                        return; //다음 문장이 실행되지 않도록 강제종료
+                    }
+                    txt1.stop(true, true).animate({marginLeft : "-=10%"}, 500); 
+
+                }else{
+                    count++;
+                    if(count > 10){
+                        count = 10;
+                        return;
+                    }
+                    //0.5초동안 marginLeft가 계속 10%씩 누적되면서 증가
+                    //stop(true, true) : 첫번째 true는 스택에 쌓인 애니메이션을 삭제, 
+                    //두번째 true는 finish라는 효과메소드를 제어함 그래서 버튼을 여러번 눌러도 손을 떼는 순간 멈춤 
+                    txt1.stop(true, true).animate({marginLeft : "+=10%"}, 500); 
+                }
+                console.log(count); //콘솔창을 통해서 go와 back을 누르면 count값이 변화하는것을 확인가능함
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+    <p class="btn">
+        <button class="backBtn">Back</button>
+        <button class="goBtn">Go</button>
+    </p>
+    <div class="content">
+        <p class="txt1">내용1</p>
+    </div>
+</body>
+
+</html>
